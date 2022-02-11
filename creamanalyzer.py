@@ -490,7 +490,7 @@ with st.container():
             with col1:
                 
                 
-                fig=px.scatter(datat, x='polarity', y='subjectivity', animation_frame="Stars",trendline="ols")
+                fig=px.scatter(datat, x='polarity', y='subjectivity',trendline="ols")
                 fig.update_layout(title='Subjectivity Vs Polarity')
                 st.plotly_chart(fig, use_container_width=True)
                 
