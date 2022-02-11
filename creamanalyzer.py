@@ -488,37 +488,29 @@ with st.container():
                 datat=data2
             if option2=='Vichy   ':
                 datat=data3
-            col1,col2=st.columns([1,1])
-            with col1:
-                
-                
-                fig=px.scatter(datat, x='polarity', y='subjectivity',trendline="ols")
-                fig.update_layout(title='Subjectivity Vs Polarity')
-                st.plotly_chart(fig, use_container_width=True)
-                
-            with col2:    
+                 
         
-                df2= pd.DataFrame()
-                for i in range (1,6):
-                  df2.loc[i,'polarity']= (datat.loc[data.Stars == i].polarity.mean())
-                  df2.loc[i,'subjectivity']= (datat.loc[data.Stars == i].subjectivity.mean())
-                  
-                  
-                fig=px.scatter(df2, x='polarity', y='subjectivity',text=df2.index,symbol=df2.index)
-                fig.update_traces(textposition="bottom right")
-                fig.update_layout(
-                title="Mean Polarity Vs Mean Subjectivity",
-                xaxis_title='⬅ Negative -- Positive ⮕',
-                yaxis_title='⬅ Facts -- Opinions ⮕',
-                legend_title="Legend Title",
-                #font=dict(
-                    #family="Courier New, monospace",
-                    #size=18,
-                    #color="RebeccaPurple"
-                #)
-                )
-                fig.update_layout(showlegend=False)
-                st.plotly_chart(fig, use_container_width=True)
+            df2= pd.DataFrame()
+            for i in range (1,6):
+              df2.loc[i,'polarity']= (datat.loc[data.Stars == i].polarity.mean())
+              df2.loc[i,'subjectivity']= (datat.loc[data.Stars == i].subjectivity.mean())
+
+
+            fig=px.scatter(df2, x='polarity', y='subjectivity',text=df2.index,symbol=df2.index)
+            fig.update_traces(textposition="bottom right")
+            fig.update_layout(
+            title="Mean Polarity Vs Mean Subjectivity",
+            xaxis_title='⬅ Negative -- Positive ⮕',
+            yaxis_title='⬅ Facts -- Opinions ⮕',
+            legend_title="Legend Title",
+            #font=dict(
+                #family="Courier New, monospace",
+                #size=18,
+                #color="RebeccaPurple"
+            #)
+            )
+            fig.update_layout(showlegend=False)
+            st.plotly_chart(fig, use_container_width=True)
             
             
         
