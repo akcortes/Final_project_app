@@ -142,7 +142,7 @@ with st.container():
         
 
 with st.container():
-    st.image(r"/app/final_project_app/Final_project/eda.svg", use_column_width=True)
+    st.image(r"/app/final_project_app/eda.svg", use_column_width=True)
     if eda:
         with st.container():
             
