@@ -76,19 +76,19 @@ warnings.filterwarnings("ignore")
 st.set_page_config(layout="wide")
 
 
-data = pd.read_csv(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/Analyzed_Data_Avene.csv")
-data2= pd.read_csv(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/Analyzed_Data_Roche.csv")
-data3= pd.read_csv(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/Analyzed_Data_Vichy.csv")
+data = pd.read_csv(r"/app/final_project_app/Analyzed_Data_Avene.csv")
+data2= pd.read_csv(r"/app/final_project_app/Analyzed_Data_Roche.csv")
+data3= pd.read_csv(r"/app/final_project_app/Analyzed_Data_Vichy.csv")
 
 data2= data2.dropna()
 data2= data2.drop(columns='Unnamed: 0')
 
-st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/image1.png", use_column_width=True)
-st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/image2.svg", use_column_width=True)
-st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/image1.png", use_column_width=True)
+st.image(r"/app/final_project_app/image1.png", use_column_width=True)
+st.image(r"/app/final_project_app/image2.svg", use_column_width=True)
+st.image(r"/app/final_project_app/image1.png", use_column_width=True)
 
 
-st.sidebar.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/imagesidebar.png", use_column_width=True)
+st.sidebar.image(r"/app/final_project_app/imagesidebar.png", use_column_width=True)
 st.sidebar.write("###  WELCOME ⚜️!")
 st.sidebar.write("You can set up different display options here below")
 st.sidebar.write("")
@@ -124,25 +124,25 @@ conclusion = st.sidebar.checkbox(" Main Results")
 st.sidebar.write("  1️⃣ Main Results")
 
 with st.container():
-    st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/description.svg", use_column_width=True)
+    st.image(r"/app/final_project_app/description.svg", use_column_width=True)
     if description:
         with st.container():
             with st.expander("Business Case"):
-                st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/slideBusinessCase.png", use_column_width=True)
+                st.image(r"/app/final_project_app/slideBusinessCase.png", use_column_width=True)
 
         with st.container():
             with st.expander("Project Overview"):
-                st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/SlideProjectOverview.png", use_column_width=True)
+                st.image(r"/app/final_project_app/SlideProjectOverview.png", use_column_width=True)
             
         with st.container():
             with st.expander("Our Data"):
-                st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/slideData.png", use_column_width=True)
+                st.image(r"/app/final_project_app/slideData.png", use_column_width=True)
 
         
         
 
 with st.container():
-    st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/eda.svg", use_column_width=True)
+    st.image(r"/app/final_project_app/Final_project/eda.svg", use_column_width=True)
     if eda:
         with st.container():
             
@@ -350,7 +350,7 @@ with st.container():
 
 #Polarity study
 with st.container():
-    st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/sentimentana.svg", use_column_width=True)
+    st.image(r"/app/final_project_app/sentimentana.svg", use_column_width=True)
     if sentimentfe:
         with st.container():
             st.markdown("## Polarity Analysis " )
@@ -697,7 +697,7 @@ with st.container():
                 
         with st.container():
             with st.expander("Polarity Reviews Extremes"):
-                st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/slideExtremesPolarityReviews.png", use_column_width=True)
+                st.image(r"/app/final_project_app/slideExtremesPolarityReviews.png", use_column_width=True)
 
 
 
@@ -705,20 +705,20 @@ with st.container():
 
         
 with st.container():
-    st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/models.svg", use_column_width=True)
+    st.image(r"/app/final_project_app/models.svg", use_column_width=True)
     if Models:            
 
         with st.container():
             with st.expander("Topic Modeling"):
-                st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/SlideTopicModeling.png", use_column_width=True)
+                st.image(r"/app/final_project_app/SlideTopicModeling.png", use_column_width=True)
 
 
         with st.container():
-            st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/clusters.png", use_column_width=True)
+            st.image(r"/app/final_project_app/clusters.png", use_column_width=True)
 
 with st.container():
-    st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/mainresults.svg", use_column_width=True)
+    st.image(r"/app/final_project_app/mainresults.svg", use_column_width=True)
     if conclusion:
         with st.container():
             with st.expander("Main Results"):
-                st.image(r"/Users/anak/DAFT_NOV_21_01-main/module_3/Final_project/SLIDEMainResults2.png", use_column_width=True)
+                st.image(r"/app/final_project_app/SLIDEMainResults2.png", use_column_width=True)
