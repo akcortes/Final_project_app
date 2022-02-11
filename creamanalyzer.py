@@ -532,56 +532,7 @@ with st.container():
         with st.container():
             st.markdown("## Good and Bad Reviews " )
             dfp=data
-            
-            #Definition function
-            def regroup_text(dataSerie):
-                text = '' 
-                for val in dataSerie: 
-                    val = str(val) 
-                    tokens = val.split() 
-                    text += " ".join(tokens)+" "
-                return text
-            
-            def nouns(text):
-                '''Given a string of text, tokenize the text and pull out only the nouns.'''
-                is_noun = lambda pos: pos[:2] == 'NN'
-                tokenized = word_tokenize(text)
-                all_nouns = [word for (word, pos) in pos_tag(tokenized) if is_noun(pos)] 
-                return ' '.join(all_nouns)
-            
-            def adj(text):
-                '''Given a string of text, tokenize the text and pull out only the nouns and adjectives.'''
-                is_adj = lambda pos: pos[:2] == 'JJ'
-                tokenized = word_tokenize(text)
-                adj = [word for (word, pos) in pos_tag(tokenized) if is_adj(pos)] 
-                return ' '.join(adj)
-            
-            def nouns_adj(text):
-                '''Given a string of text, tokenize the text and pull out only the nouns and adjectives.'''
-                is_noun_adj = lambda pos: pos[:2] == 'NN' or pos[:2] == 'JJ'
-                tokenized = word_tokenize(text)
-                nouns_adj = [word for (word, pos) in pos_tag(tokenized) if is_noun_adj(pos)] 
-                return ' '.join(nouns_adj)
-            
-            def freq_words_in_text(text):
-                all_words = text.split()
-               
-                fdist = FreqDist(all_words)
-                words_df = pd.DataFrame({'word':list(fdist.keys()), 'count':list(fdist.values())})
-                
-                
-                d = words_df.nlargest(columns="count", n=20)
-                d = d.sort_values(by='count', ascending=True)
-                d['freq_rel'] = d['count']/(sum(d['count']))
-                plt.barh(d.word,d['freq_rel'])
-                plt.title('Most frequent words')
-                plt.xlabel('Percentage')
-                plt.show()
-            
-            
-            
-            
-            
+
             
             if st.button('Avène  '):
                 dfp=data
@@ -609,85 +560,6 @@ with st.container():
                 plt.axis("off")
                 st.pyplot()
                 
-
-            with st.container():
-                st.markdown("### Top Word Analysis ➡️ Nouns" )
-
-                def regroup_text(dataSerie):
-                    text = '' 
-                    for val in dataSerie: 
-                        val = str(val) 
-                        tokens = val.split() 
-                        text += " ".join(tokens)+" "
-                    return text
-                
-                def nouns(text):
-                    '''Given a string of text, tokenize the text and pull out only the nouns.'''
-                    is_noun = lambda pos: pos[:2] == 'NN'
-                    tokenized = word_tokenize(text)
-                    all_nouns = [word for (word, pos) in pos_tag(tokenized) if is_noun(pos)] 
-                    return ' '.join(all_nouns)
-                
-                def adj(text):
-                    '''Given a string of text, tokenize the text and pull out only the nouns and adjectives.'''
-                    is_adj = lambda pos: pos[:2] == 'JJ'
-                    tokenized = word_tokenize(text)
-                    adj = [word for (word, pos) in pos_tag(tokenized) if is_adj(pos)] 
-                    return ' '.join(adj)
-                
-                def nouns_adj(text):
-                    '''Given a string of text, tokenize the text and pull out only the nouns and adjectives.'''
-                    is_noun_adj = lambda pos: pos[:2] == 'NN' or pos[:2] == 'JJ'
-                    tokenized = word_tokenize(text)
-                    nouns_adj = [word for (word, pos) in pos_tag(tokenized) if is_noun_adj(pos)] 
-                    return ' '.join(nouns_adj)
-                
-                def freq_words_in_text(text):
-                    all_words = text.split()
-                   
-                    fdist = FreqDist(all_words)
-                    words_df = pd.DataFrame({'word':list(fdist.keys()), 'count':list(fdist.values())})
-                    
-                    d = words_df.nlargest(columns="count", n=20)
-                    d = d.sort_values(by='count', ascending=True)
-                    d['freq_rel'] = d['count']/(sum(d['count']))
-                    fig = go.Figure(go.Bar(
-                    x=d['freq_rel'],
-                    y=d.word,
-                    orientation='h'))
-                    st.plotly_chart(fig, use_container_width=True)
-                
-                
-                with st.container():
-                    col1,col2=st.columns([1,1])
-                    
-                    
-                    with col1: 
-                        col1.markdown("## Good Reviews")
-                        good_reviews = dfp[(dfp.Stars == 5)]
-                        bad_reviews = dfp[((dfp.Stars == 1) | (data.Stars == 2))]
-                        nouns_gr = nouns(regroup_text(good_reviews.Text))
-                        freq_words_in_text(nouns_gr)
-                        st.markdown("### Top Word Analysis ➡️ Adjectives" )
-                    
-                    with col2:
-                        col2.markdown("## Bad Reviews")
-                        noun_gr = nouns(regroup_text(bad_reviews.Text))
-                        freq_words_in_text(noun_gr)
-
-                with st.container():
-                    col1,col2=st.columns([1,1])
-                    
-                    
-                    with col1: 
-                        col1.markdown("## Good Reviews")
-                        adj_gr = adj(regroup_text(good_reviews.Text))
-                        freq_words_in_text(adj_gr)
-                    
-                    with col2:
-                        col2.markdown("## Bad Reviews")
-                        adj_gr = adj(regroup_text(bad_reviews.Text))
-                        freq_words_in_text(adj_gr)
                 
         with st.container():
             with st.expander("Polarity Reviews Extremes"):
